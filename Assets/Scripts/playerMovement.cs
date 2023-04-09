@@ -69,7 +69,7 @@ public class playerMovement : MonoBehaviour
             anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
             range.SetActive(true);
             range.transform.position = groundCheck.transform.position;
-            range.transform.localScale = new Vector3(3, 0.05f, 3);
+            range.transform.localScale = new Vector3(2, 0.05f, 2);
             BoxCollider collider = range.GetComponent<BoxCollider>();
             collider.size = new Vector3(collider.size.x, 80, collider.size.z);
 
