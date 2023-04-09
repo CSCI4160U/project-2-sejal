@@ -18,6 +18,8 @@ public class playerMovement : MonoBehaviour
     public float groundDistance = 0.1f;
     public LayerMask groundMask;
     public bool isGrounded;
+    public bool canAttack = true;
+    public bool isAttacking = false;
 
     [SerializeField] GameObject range;
     [SerializeField] Animator anim = null;
@@ -68,24 +70,53 @@ public class playerMovement : MonoBehaviour
             range.SetActive(true);
             range.transform.position = groundCheck.transform.position;
             range.transform.localScale = new Vector3(3, 0.05f, 3);
+            BoxCollider collider = range.GetComponent<BoxCollider>();
+            collider.size = new Vector3(collider.size.x, 80, collider.size.z);
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha1) && direction == Vector3.zero) 
         {
-            
-            anim.SetTrigger("Attack1");
-            
+            if (canAttack) 
+            {
+                 isAttacking = true;
+                canAttack = false;
+                anim.SetTrigger("Attack1");
+                StartCoroutine(ResetAttackCoolDown(2f));
+            }  
         }
         if (Input.GetKeyDown(KeyCode.Alpha2) && direction == Vector3.zero)
         {
-            anim.SetTrigger("Attack2");
+            if (canAttack)
+            {
+                isAttacking = true;
+                canAttack = false;
+                anim.SetTrigger("Attack2");
+                StartCoroutine(ResetAttackCoolDown(3.5f));
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha3) && direction == Vector3.zero)
         {
-            anim.SetTrigger("Attack3");
+            if (canAttack)
+            {
+                isAttacking = true;
+                canAttack = false;
+                anim.SetTrigger("Attack3");
+                StartCoroutine(ResetAttackCoolDown(5));
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Alpha1)) 
+        { 
+            isAttacking = false;
         }
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    IEnumerator ResetAttackCoolDown(float CoolDown) 
+    {
+        //StartCoroutine(ResetIsAttacking(1));
+        yield return new WaitForSeconds(CoolDown);
+        canAttack = true;
     }
 }
