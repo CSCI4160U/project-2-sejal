@@ -78,7 +78,7 @@ public class playerMovement : MonoBehaviour
         {
             if (canAttack) 
             {
-                 isAttacking = true;
+                isAttacking = true;
                 canAttack = false;
                 anim.SetTrigger("Attack1");
                 StartCoroutine(ResetAttackCoolDown(2f));
