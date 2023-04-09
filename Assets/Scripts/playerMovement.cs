@@ -19,6 +19,7 @@ public class playerMovement : MonoBehaviour
     public LayerMask groundMask;
     public bool isGrounded;
 
+    [SerializeField] GameObject range;
     [SerializeField] Animator anim = null;
 
     void Start()
@@ -40,7 +41,7 @@ public class playerMovement : MonoBehaviour
 
         if (direction != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
         {
-            Debug.Log("Walking");
+            range.SetActive(false);
             anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -48,9 +49,11 @@ public class playerMovement : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * walkSpeed * Time.deltaTime);
+
         }
         else if (direction != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
         {
+            range.SetActive(false);
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -62,19 +65,26 @@ public class playerMovement : MonoBehaviour
         else if (direction == Vector3.zero) 
         {
             anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+            range.SetActive(true);
+            range.transform.position = groundCheck.transform.position;
+            range.transform.localScale = new Vector3(3, 0.05f, 3);
+
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1)) 
+        if (Input.GetKeyDown(KeyCode.Alpha1) && direction == Vector3.zero) 
         {
+            
             anim.SetTrigger("Attack1");
+            
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && direction == Vector3.zero)
         {
             anim.SetTrigger("Attack2");
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) && direction == Vector3.zero)
         {
             anim.SetTrigger("Attack3");
         }
+
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
