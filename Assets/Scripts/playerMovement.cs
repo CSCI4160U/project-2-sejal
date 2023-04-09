@@ -5,7 +5,8 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public CharacterController controller;
-    public float speed = 6f;
+    public float walkSpeed = 8f;
+    public float runSpeed = 20f;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     public Transform cam;
@@ -14,11 +15,11 @@ public class playerMovement : MonoBehaviour
     Vector3 velocity;
     public float gravity = -9.81f;
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundDistance = 0.1f;
     public LayerMask groundMask;
     public bool isGrounded;
 
-    //[SerializeField] Animator anim = null;
+    [SerializeField] Animator anim = null;
 
     void Start()
     {
@@ -37,16 +38,32 @@ public class playerMovement : MonoBehaviour
         transform.Rotate(Vector3.up * horizontal);
         Vector3 direction = new Vector3(0f, 0f, vertical).normalized;
 
-        if (direction.magnitude >= 0.1f)
+        if (direction != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
+        {
+            Debug.Log("Walking");
+            anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            controller.Move(moveDir.normalized * walkSpeed * Time.deltaTime);
+        }
+        else if (direction != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            controller.Move(moveDir.normalized * runSpeed * Time.deltaTime);
+            anim.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
         }
-        //anim.SetFloat("speed", direction.sqrMagnitude);
+        else if (direction == Vector3.zero) 
+        {
+            anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+        }
+        
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
