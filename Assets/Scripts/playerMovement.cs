@@ -63,12 +63,17 @@ public class playerMovement : MonoBehaviour
         {
             anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
         }
-        
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Alpha1)) 
         {
-            //anim.SetTrigger("jump");
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            anim.SetTrigger("Attack1");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            anim.SetTrigger("Attack2");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            anim.SetTrigger("Attack3");
         }
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
