@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public float health = 20f;
+    [SerializeField] public float maxHealth = 20f;
+    [SerializeField] public float health;
     [SerializeField] float alertDist = 12f;
     [SerializeField] float attackDist = 2f;
     [SerializeField] Transform target;
@@ -15,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float deathTime;
 
     public GameObject player;
+    public GameObject HealthBar;
     private Animator anim;
     private int wayPointIndex = 0;
     private NavMeshAgent agent;
@@ -25,6 +28,9 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        health = maxHealth;
+        HealthBar = transform.Find("HealthBar").gameObject;
+        HealthBar.SetActive(false);
         player = target.gameObject;
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
@@ -57,6 +63,7 @@ public class Enemy : MonoBehaviour
         }
         else if (direction.magnitude < alertDist)
         {
+            HealthBar.SetActive(true);
             agent.speed = 5;
             anim.SetTrigger("run");
             agent.SetDestination(target.position);  
@@ -98,7 +105,7 @@ public class Enemy : MonoBehaviour
             isAttacked= true;
             
             if (health <= 0)
-            { 
+            {
                 isDead = true;
                 anim.SetTrigger("death");
                 StartCoroutine(IsDead(deathTime));
@@ -107,6 +114,10 @@ public class Enemy : MonoBehaviour
             StartCoroutine(ResetIsAttacked(isAttackCool));
         }
         
+    }
+    public float GetHealthPercent()
+    {
+        return health / maxHealth;
     }
     IEnumerator ResetIsAttacked(float isAttackCool)
     {
