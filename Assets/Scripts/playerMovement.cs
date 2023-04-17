@@ -20,6 +20,8 @@ public class playerMovement : MonoBehaviour
     public bool isGrounded;
     public bool canAttack = true;
     public bool isAttacking = false;
+    public float attackTime;
+    public float attackDmg;
 
     [SerializeField] GameObject range;
     [SerializeField] Animator anim = null;
@@ -79,9 +81,11 @@ public class playerMovement : MonoBehaviour
             if (canAttack) 
             {
                 isAttacking = true;
+                attackTime = 2;
+                attackDmg = 10;
                 canAttack = false;
                 anim.SetTrigger("Attack1");
-                StartCoroutine(ResetAttackCoolDown(2f));
+                StartCoroutine(ResetAttackCoolDown(attackTime));
             }  
         }
         if (Input.GetKeyDown(KeyCode.Alpha2) && direction == Vector3.zero)
@@ -89,9 +93,11 @@ public class playerMovement : MonoBehaviour
             if (canAttack)
             {
                 isAttacking = true;
+                attackTime = 3.5f;
+                attackDmg = 15;
                 canAttack = false;
                 anim.SetTrigger("Attack2");
-                StartCoroutine(ResetAttackCoolDown(3.5f));
+                StartCoroutine(ResetAttackCoolDown(attackTime));
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha3) && direction == Vector3.zero)
@@ -100,12 +106,22 @@ public class playerMovement : MonoBehaviour
             {
                 isAttacking = true;
                 canAttack = false;
+                attackTime = 8f;
+                attackDmg = 30;
                 anim.SetTrigger("Attack3");
-                StartCoroutine(ResetAttackCoolDown(5));
+                StartCoroutine(ResetAttackCoolDown(attackTime));
             }
         }
         if (Input.GetKeyUp(KeyCode.Alpha1)) 
         { 
+            isAttacking = false;
+        }
+        if (Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            isAttacking = false;
+        }
+        if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
             isAttacking = false;
         }
 

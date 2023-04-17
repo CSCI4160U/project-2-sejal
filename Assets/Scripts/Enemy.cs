@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform[] waypoints;
     [SerializeField] float closeEnoughDistance = 1;
     [SerializeField] bool loop = true;
+    [SerializeField] float deathTime;
 
     public GameObject player;
     private Animator anim;
@@ -45,7 +46,7 @@ public class Enemy : MonoBehaviour
        
         if (direction.magnitude < attackDist)
         {
-            if (canAttack)
+            if (canAttack && !isDead)
             {
                 agent.speed = 0;
                 canAttack = false;
@@ -89,7 +90,7 @@ public class Enemy : MonoBehaviour
         }
         
     }
-    public void TakeDamage(float dmg) 
+    public void TakeDamage(float dmg, float isAttackCool) 
     {
         if (!isAttacked)
         {
@@ -100,21 +101,21 @@ public class Enemy : MonoBehaviour
             { 
                 isDead = true;
                 anim.SetTrigger("death");
-                StartCoroutine(IsDead());
+                StartCoroutine(IsDead(deathTime));
                 Debug.Log("Wolf Died!");
             }
-            StartCoroutine(ResetIsAttacked());
+            StartCoroutine(ResetIsAttacked(isAttackCool));
         }
         
     }
-    IEnumerator ResetIsAttacked()
+    IEnumerator ResetIsAttacked(float isAttackCool)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(isAttackCool);
         isAttacked = false;
     }
-    IEnumerator IsDead()
+    IEnumerator IsDead(float deathTime)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(deathTime);
         Destroy(gameObject);
     }
     IEnumerator ResetAttackCoolDown(float CoolDown)
