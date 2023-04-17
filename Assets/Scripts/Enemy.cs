@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
         }
         else if (direction.magnitude < alertDist)
         {
-            agent.speed = 10;
+            agent.speed = 5;
             anim.SetTrigger("run");
             agent.SetDestination(target.position);  
         }
