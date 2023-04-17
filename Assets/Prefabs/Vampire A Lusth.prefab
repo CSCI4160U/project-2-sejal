@@ -2445,6 +2445,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   health: 20
+  walkSpeed: 3
+  runSpeed: 5
   alertDist: 20
   attackDist: 3
   target: {fileID: 0}

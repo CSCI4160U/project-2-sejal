@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] public float maxHealth = 20f;
     [SerializeField] public float health;
+    [SerializeField] public float walkSpeed;
+    [SerializeField] public float runSpeed;
     [SerializeField] float alertDist = 12f;
     [SerializeField] float attackDist = 2f;
     [SerializeField] Transform target;
@@ -63,10 +65,10 @@ public class Enemy : MonoBehaviour
         }
         else if (direction.magnitude < alertDist)
         {
-            HealthBar.SetActive(true);
-            agent.speed = 5;
+            agent.speed = runSpeed;
             anim.SetTrigger("run");
-            agent.SetDestination(target.position);  
+            agent.SetDestination(target.position);
+            HealthBar.SetActive(true);
         }
         
         else if (distanceToTarget < closeEnoughDistance)
@@ -91,7 +93,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            agent.speed = 3;
+            agent.speed = walkSpeed;
             anim.SetTrigger("walk");
             agent.SetDestination(waypoints[wayPointIndex].position);
         }
