@@ -9,10 +9,14 @@ public class collisionDetection : MonoBehaviour
 
     void OnTriggerStay(Collider col) 
     {
-
         if (col.tag == "Enemy" && move.isAttacking)
         {
             col.GetComponent<Enemy>().TakeDamage(move.attackDmg, move.attackTime);
+        }
+        if (col.tag == "Boss" && move.isAttacking)
+        {
+            Debug.Log("Hit Boss");
+            col.GetComponent<Boss>().TakeDamage(move.attackDmg, move.attackTime);
         }
     }
 }
