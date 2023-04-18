@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
                 agent.speed = 0;
                 canAttack = false;
                 anim.SetTrigger("attack");
-                player.GetComponent<playerHealth>().TakeDmg(6f);
+                player.GetComponent<playerStats>().TakeDmg(6f);
                 StartCoroutine(ResetAttackCoolDown(4f));
             }
         }
@@ -109,9 +109,11 @@ public class Enemy : MonoBehaviour
             if (health <= 0)
             {
                 isDead = true;
+                var name = this.name;
+                player.GetComponent<playerStats>().enemiesKilled.Add(name);
                 anim.SetTrigger("death");
                 StartCoroutine(IsDead(deathTime));
-                Debug.Log("Wolf Died!");
+                //Debug.Log("Enemy Died!");
             }
             StartCoroutine(ResetIsAttacked(isAttackCool));
         }

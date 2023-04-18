@@ -42,10 +42,10 @@ public class Boss : MonoBehaviour
                 canAttack = false;
                 if (x <= 3)
                 {
-                    player.GetComponent<playerHealth>().TakeDmg(10f);
+                    player.GetComponent<playerStats>().TakeDmg(10f);
                 }
                 else {
-                    player.GetComponent<playerHealth>().TakeDmg(15f);
+                    player.GetComponent<playerStats>().TakeDmg(15f);
                 }
                 StartCoroutine(ResetAttackCoolDown(5f));
             }

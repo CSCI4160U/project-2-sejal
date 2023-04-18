@@ -16,7 +16,7 @@ public class dOBJs
 public class DialogueObj : MonoBehaviour
 
 {
-    public PlayersData data;
+    public playerStats data;
     public TMP_Text name;
     public TMP_Text dialogueText;
 
@@ -26,8 +26,9 @@ public class DialogueObj : MonoBehaviour
     private dOBJs currDialogue = null;
 
     [Header("Dialogue objects")]
+    public dOBJs dialogue0;
     public dOBJs dialogue1;
-    public dOBJs dialogue1pnt5;
+    public dOBJs dialogue2;
 
     [Header("NPCS")]
     public NPC1 npc1;
@@ -42,13 +43,17 @@ public class DialogueObj : MonoBehaviour
         switch (data.dialogueNum)
         {
             case 0:
-                initDialogue(dialogue1);
-                currDialogue = dialogue1;
+                initDialogue(dialogue0);
+                currDialogue = dialogue0;
 
                 break;
             case 1:
-                initDialogue(dialogue1pnt5);
-                currDialogue = dialogue1pnt5;
+                initDialogue(dialogue1);
+                currDialogue = dialogue1;
+                break;
+            case 2:
+                initDialogue(dialogue2);
+                currDialogue = dialogue2;
                 break;
             default:
                 break;
@@ -71,6 +76,9 @@ public class DialogueObj : MonoBehaviour
                     npc1.questGiven = true;
                     obj.StartQuest(obj.questObjs[0]);
                     break;
+                case 2:
+                    obj.CloseQuest();
+                    break;
             }
             data.dialogueNum = 0;
             currentDialogueNum = 0;
@@ -84,7 +92,6 @@ public class DialogueObj : MonoBehaviour
         {
             currentDialogueNum += 1; 
             initDialogue(currDialogue);
-
         }
     }
 }

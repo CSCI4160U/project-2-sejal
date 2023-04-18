@@ -31,11 +31,8 @@ public class QuestOBJ : MonoBehaviour
         questObjective1.text = tempqOBJ.qObj1;
         questObjective2.text = tempqOBJ.qObj2;
         questOBJ.SetActive(true);
-
-
-
     }
-    private void CloseQuest()
+    public void CloseQuest()
     {
         questOBJ.SetActive(false);
     }

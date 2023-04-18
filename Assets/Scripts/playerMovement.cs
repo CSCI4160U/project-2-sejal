@@ -22,12 +22,15 @@ public class playerMovement : MonoBehaviour
     public bool isAttacking = false;
     public float attackTime;
     public float attackDmg;
+    public playerStats stats;
 
     [SerializeField] GameObject range;
     [SerializeField] Animator anim = null;
 
     void Start()
     {
+        stats = FindObjectOfType<playerStats>();
+        attackDmg = stats.attackDmg;
     }
     void Update()
     {
@@ -82,7 +85,7 @@ public class playerMovement : MonoBehaviour
             {
                 isAttacking = true;
                 attackTime = 2;
-                attackDmg = 10;
+                attackDmg = stats.attackDmg;
                 canAttack = false;
                 anim.SetTrigger("Attack1");
                 StartCoroutine(ResetAttackCoolDown(attackTime));
@@ -94,7 +97,7 @@ public class playerMovement : MonoBehaviour
             {
                 isAttacking = true;
                 attackTime = 3.5f;
-                attackDmg = 15;
+                attackDmg = stats.attackDmg * 0.5f;
                 canAttack = false;
                 anim.SetTrigger("Attack2");
                 StartCoroutine(ResetAttackCoolDown(attackTime));
@@ -107,7 +110,7 @@ public class playerMovement : MonoBehaviour
                 isAttacking = true;
                 canAttack = false;
                 attackTime = 8f;
-                attackDmg = 30;
+                attackDmg = stats.attackDmg * 3f;
                 anim.SetTrigger("Attack3");
                 StartCoroutine(ResetAttackCoolDown(attackTime));
             }
