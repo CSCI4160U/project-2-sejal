@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class collisionDetection : MonoBehaviour
 {
+    [SerializeField] public GameObject gameOver;
     public playerMovement move;
     public float attackTime;
 
@@ -15,13 +16,21 @@ public class collisionDetection : MonoBehaviour
         }
         if (col.tag == "Boss" && move.isAttacking)
         {
-            Debug.Log("Hit Boss");
+            //Debug.Log("Hit Boss");
             col.GetComponent<Boss>().TakeDamage(move.attackDmg, move.attackTime);
         }
         if (col.tag == "FinalBoss" && move.isAttacking)
         {
-            Debug.Log("Hit Boss");
+            //Debug.Log("Hit Boss");
             col.GetComponent<finalBoss>().TakeDamage(move.attackDmg, move.attackTime);
+        }
+    }
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "GameOver")
+        {
+            Debug.Log("GameOver");
+            gameOver.SetActive(true);
         }
     }
 }

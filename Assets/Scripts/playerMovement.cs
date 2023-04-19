@@ -23,12 +23,15 @@ public class playerMovement : MonoBehaviour
     public float attackTime;
     public float attackDmg;
     public playerStats stats;
+    public GameObject gameOver = null;
 
     [SerializeField] GameObject range;
     [SerializeField] Animator anim = null;
 
     void Start()
     {
+        gameOver = GameObject.Find("GameOver");
+        gameOver.SetActive(false);
         stats = FindObjectOfType<playerStats>();
         attackDmg = stats.attackDmg;
     }
@@ -126,6 +129,10 @@ public class playerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Alpha3))
         {
             isAttacking = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameOver.SetActive(false);
         }
 
         velocity.y += gravity * Time.deltaTime;

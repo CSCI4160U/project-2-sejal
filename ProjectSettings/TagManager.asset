@@ -8,6 +8,7 @@ TagManager:
   - Attack
   - Boss
   - FinalBoss
+  - GameOver
   layers:
   - Default
   - TransparentFX
