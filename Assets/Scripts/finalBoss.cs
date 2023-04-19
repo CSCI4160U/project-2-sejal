@@ -8,8 +8,10 @@ public class finalBoss : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] float alertDistance = 10f;
     [SerializeField] float attackDistance = 3f;
-    [SerializeField] float health = 140f;
+    [SerializeField] float maxHealth = 140f;
+    [SerializeField] float health;
 
+    public GameObject HealthBar;
     private Animator anim;
     private NavMeshAgent agent;
     public bool canAttack = true;
@@ -18,6 +20,9 @@ public class finalBoss : MonoBehaviour
 
     private void Awake()
     {
+        health = maxHealth;
+        HealthBar = transform.Find("HealthBar").gameObject;
+        HealthBar.SetActive(false);
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         player = target.gameObject;
@@ -53,6 +58,7 @@ public class finalBoss : MonoBehaviour
         }
         else if (towardPlayer.magnitude < alertDistance)
         {
+            HealthBar.SetActive(true);
             agent.enabled = true;
             agent.SetDestination(target.position);
             anim.SetFloat("Forward", agent.velocity.magnitude);
@@ -93,5 +99,9 @@ public class finalBoss : MonoBehaviour
     {
         yield return new WaitForSeconds(deathTime);
         Destroy(gameObject);
+    }
+    public float GetHealthPercent()
+    {
+        return health / maxHealth;
     }
 }

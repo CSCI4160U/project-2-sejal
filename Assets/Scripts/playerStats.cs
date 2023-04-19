@@ -81,6 +81,6 @@ public class playerStats : MonoBehaviour
         yield return new WaitForSeconds(2);
         DeathScreen.SetActive(true);
         yield return new WaitForSeconds(deathTime-2);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

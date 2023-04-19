@@ -8,27 +8,32 @@ public class Boss : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] float alertDistance = 6f;
     [SerializeField] float attackDistance = 1f;
-    [SerializeField] float health = 90f;
+    [SerializeField] float maxHealth = 90f;
+    [SerializeField] float health;
 
     private Animator anim;
+    public GameObject HealthBar;
     private NavMeshAgent agent;
     public bool canAttack = true;
     public bool isAttacked = false;
     public GameObject player;
 
-    private void Awake() 
+    private void Awake()
     {
+        HealthBar = transform.Find("HealthBar").gameObject;
+        HealthBar.SetActive(false);
+        health = maxHealth;
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         player = target.gameObject;
     }
 
-    private void Update() 
-    {   
+    private void Update()
+    {
         Vector3 towardPlayer = target.position - transform.position;
         towardPlayer.y = 0f;
 
-        if (towardPlayer.magnitude < attackDistance) 
+        if (towardPlayer.magnitude < attackDistance)
         {
             agent.enabled = false;
             anim.SetFloat("Forward", 0f);
@@ -44,7 +49,8 @@ public class Boss : MonoBehaviour
                 {
                     player.GetComponent<playerStats>().TakeDmg(10f);
                 }
-                else {
+                else
+                {
                     player.GetComponent<playerStats>().TakeDmg(15f);
                 }
                 StartCoroutine(ResetAttackCoolDown(5f));
@@ -52,6 +58,7 @@ public class Boss : MonoBehaviour
         }
         else if (towardPlayer.magnitude < alertDistance)
         {
+            HealthBar.SetActive(true);
             agent.enabled = true;
             agent.SetDestination(target.position);
             anim.SetFloat("Forward", agent.velocity.magnitude);
@@ -92,5 +99,9 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(deathTime);
         Destroy(gameObject);
+    }
+    public float GetHealthPercent()
+    {
+        return health / maxHealth;
     }
 }

@@ -21,16 +21,43 @@ public class HealthStatusEnemy : MonoBehaviour
 
         GetComponent<RectTransform>().position = healthBarPosition;
 
-
-        float healthPercent = enemyTransform.GetComponent<Enemy>().GetHealthPercent();
-        healthBarImage.fillAmount = healthPercent;
-        if (healthPercent <= 0.7)
+        if (enemyTransform.gameObject.tag == "Enemy")
         {
-            healthBarImage.color = new Color(0.9333333f, 0.594713f, 0.00392154f);
+            float healthPercent = enemyTransform.GetComponent<Enemy>().GetHealthPercent();
+            healthBarImage.fillAmount = healthPercent;
+            if (healthPercent <= 0.7)
+            {
+                healthBarImage.color = new Color(0.9333333f, 0.594713f, 0.00392154f);
+            }
+            if (healthPercent <= 0.4)
+            {
+                healthBarImage.color = Color.red;
+            }
         }
-        if (healthPercent <= 0.4)
+        else if (enemyTransform.gameObject.tag == "FinalBoss"){
+            float healthPercent = enemyTransform.GetComponent<finalBoss>().GetHealthPercent();
+            healthBarImage.fillAmount = healthPercent;
+            if (healthPercent <= 0.7)
+            {
+                healthBarImage.color = new Color(0.9333333f, 0.594713f, 0.00392154f);
+            }
+            if (healthPercent <= 0.4)
+            {
+                healthBarImage.color = Color.red;
+            }
+        }
+        else if (enemyTransform.gameObject.tag == "Boss")
         {
-            healthBarImage.color = Color.red;
+            float healthPercent = enemyTransform.GetComponent<Boss>().GetHealthPercent();
+            healthBarImage.fillAmount = healthPercent;
+            if (healthPercent <= 0.7)
+            {
+                healthBarImage.color = new Color(0.9333333f, 0.594713f, 0.00392154f);
+            }
+            if (healthPercent <= 0.4)
+            {
+                healthBarImage.color = Color.red;
+            }
         }
     }
 }
