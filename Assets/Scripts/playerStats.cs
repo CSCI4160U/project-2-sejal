@@ -35,7 +35,12 @@ public class playerStats : MonoBehaviour
         }
     }
 
-   public bool checkQ1()
+    public float GetHealthPercent() 
+    {
+        return currentHealth / maxHealth;
+    }
+
+    public bool checkQ1()
     {
         List<string> q1Enemies = new List<string> { "Wolf", "Wolf2", "Wolf3", "Wolf4", "Wolf5", "Wolf6", "Wolf7" };
 

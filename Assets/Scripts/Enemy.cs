@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        agent.enabled = true;
         if (!patrolling)
         {
             return;
@@ -56,7 +57,7 @@ public class Enemy : MonoBehaviour
         {
             if (canAttack && !isDead)
             {
-                agent.speed = 0;
+                agent.enabled = false;
                 canAttack = false;
                 anim.SetTrigger("attack");
                 player.GetComponent<playerStats>().TakeDmg(6f);
@@ -70,7 +71,6 @@ public class Enemy : MonoBehaviour
             agent.SetDestination(target.position);
             HealthBar.SetActive(true);
         }
-        
         else if (distanceToTarget < closeEnoughDistance)
         {
             // make the next waypoint active
