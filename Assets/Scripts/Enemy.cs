@@ -96,6 +96,7 @@ public class Enemy : MonoBehaviour
             agent.speed = walkSpeed;
             anim.SetTrigger("walk");
             agent.SetDestination(waypoints[wayPointIndex].position);
+            HealthBar.SetActive(false);
         }
         
     }

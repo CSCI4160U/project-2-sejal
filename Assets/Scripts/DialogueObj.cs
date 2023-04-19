@@ -29,10 +29,15 @@ public class DialogueObj : MonoBehaviour
     public dOBJs dialogue0;
     public dOBJs dialogue1;
     public dOBJs dialogue2;
+    public dOBJs dialogue3;
+    public dOBJs dialogue4;
+    public dOBJs dialogue5;
 
     [Header("NPCS")]
     public NPC1 npc1;
-    
+    public NPC2 npc2;
+
+
     private void Start()
     {
         obj = FindObjectOfType<QuestOBJ>();
@@ -53,6 +58,18 @@ public class DialogueObj : MonoBehaviour
                 break;
             case 2:
                 initDialogue(dialogue2);
+                currDialogue = dialogue2;
+                break;
+            case 3:
+                initDialogue(dialogue3);
+                currDialogue = dialogue2;
+                break;
+            case 4:
+                initDialogue(dialogue4);
+                currDialogue = dialogue2;
+                break;
+            case 5:
+                initDialogue(dialogue5);
                 currDialogue = dialogue2;
                 break;
             default:
@@ -77,7 +94,14 @@ public class DialogueObj : MonoBehaviour
                     obj.StartQuest(obj.questObjs[0]);
                     break;
                 case 2:
-                    obj.CloseQuest();
+                    obj.StartQuest(obj.questObjs[1]);
+                    break;
+                case 3:
+                    npc2.questGiven = true;
+                    obj.StartQuest(obj.questObjs[2]);
+                    break;
+                case 5:
+                    obj.StartQuest(obj.questObjs[3]);
                     break;
             }
             data.dialogueNum = 0;

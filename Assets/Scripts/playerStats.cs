@@ -42,4 +42,10 @@ public class playerStats : MonoBehaviour
         bool allKilled = q1Enemies.All(enemiesKilled.Contains);
         return allKilled;
     }
+    public bool checkQ2() 
+    {
+        List<string> q2Enemies = new List<string> {"Vampire1", "Vampire2", "Vampire3", "Vampire4", "Vampire5", "Vampire6"};
+        bool allKilled = q2Enemies.All(enemiesKilled.Contains);
+        return allKilled;
+    }
 }
