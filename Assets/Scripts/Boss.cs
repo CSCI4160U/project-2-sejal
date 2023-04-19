@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Boss : MonoBehaviour
 {
     [SerializeField] Transform target;
-    [SerializeField] float alertDistance = 10f;
+    [SerializeField] float alertDistance = 6f;
     [SerializeField] float attackDistance = 1f;
     [SerializeField] float health = 90f;
 
@@ -67,6 +67,8 @@ public class Boss : MonoBehaviour
             if (health <= 0)
             {
                 anim.SetTrigger("Dead");
+                var name = this.name;
+                player.GetComponent<playerStats>().enemiesKilled.Add(name);
                 StartCoroutine(IsDead(4f));
                 Debug.Log("Wolf Died!");
             }

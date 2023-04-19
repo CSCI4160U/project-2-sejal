@@ -53,4 +53,16 @@ public class playerStats : MonoBehaviour
         bool allKilled = q2Enemies.All(enemiesKilled.Contains);
         return allKilled;
     }
+    public bool checkQ3()
+    {
+        List<string> q3Enemies = new List<string> { "Boss1", "Zombie", "Zombie2", "Zombie3", "Zombie4", "Zombie5", "Zombie6" };
+        bool allKilled = q3Enemies.All(enemiesKilled.Contains);
+        return allKilled;
+    }
+    public bool checkQ4()
+    {
+        List<string> q3Enemies = new List<string> { "BigWolf", "BigWolf2", "BigWolf3", "BigWolf4", "BigWolf5", "BigWolf6", "BigWolf7" };
+        bool allKilled = q3Enemies.All(enemiesKilled.Contains);
+        return allKilled;
+    }
 }

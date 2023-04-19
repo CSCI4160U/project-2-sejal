@@ -97,7 +97,7 @@ public class playerMovement : MonoBehaviour
             {
                 isAttacking = true;
                 attackTime = 3.5f;
-                attackDmg = stats.attackDmg * 0.5f;
+                attackDmg = stats.attackDmg + (stats.attackDmg * 0.5f);
                 canAttack = false;
                 anim.SetTrigger("Attack2");
                 StartCoroutine(ResetAttackCoolDown(attackTime));

@@ -32,10 +32,18 @@ public class DialogueObj : MonoBehaviour
     public dOBJs dialogue3;
     public dOBJs dialogue4;
     public dOBJs dialogue5;
+    public dOBJs dialogue6;
+    public dOBJs dialogue7;
+    public dOBJs dialogue8;
+    public dOBJs dialogue9;
+    public dOBJs dialogue10;
+    public dOBJs dialogue11;
 
     [Header("NPCS")]
     public NPC1 npc1;
     public NPC2 npc2;
+    public NPC3 npc3;
+    public NPC4 npc4;
 
 
     private void Start()
@@ -62,15 +70,39 @@ public class DialogueObj : MonoBehaviour
                 break;
             case 3:
                 initDialogue(dialogue3);
-                currDialogue = dialogue2;
+                currDialogue = dialogue3;
                 break;
             case 4:
                 initDialogue(dialogue4);
-                currDialogue = dialogue2;
+                currDialogue = dialogue4;
                 break;
             case 5:
                 initDialogue(dialogue5);
-                currDialogue = dialogue2;
+                currDialogue = dialogue5;
+                break;
+            case 6:
+                initDialogue(dialogue6);
+                currDialogue = dialogue6;
+                break;
+            case 7:
+                initDialogue(dialogue7);
+                currDialogue = dialogue7;
+                break;
+            case 8:
+                initDialogue(dialogue8);
+                currDialogue = dialogue8;
+                break;
+            case 9:
+                initDialogue(dialogue9);
+                currDialogue = dialogue9;
+                break;
+            case 10:
+                initDialogue(dialogue10);
+                currDialogue = dialogue10;
+                break;
+            case 11:
+                initDialogue(dialogue11);
+                currDialogue = dialogue11;
                 break;
             default:
                 break;
@@ -102,6 +134,20 @@ public class DialogueObj : MonoBehaviour
                     break;
                 case 5:
                     obj.StartQuest(obj.questObjs[3]);
+                    break;
+                case 6:
+                    npc3.questGiven = true;
+                    obj.StartQuest(obj.questObjs[4]);
+                    break;
+                case 8:
+                    obj.StartQuest(obj.questObjs[5]);
+                    break;
+                case 9:
+                    npc4.questGiven = true;
+                    obj.StartQuest(obj.questObjs[6]);
+                    break;
+                case 11:
+                    obj.StartQuest(obj.questObjs[7]);
                     break;
             }
             data.dialogueNum = 0;
