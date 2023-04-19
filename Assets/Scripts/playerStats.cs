@@ -61,8 +61,14 @@ public class playerStats : MonoBehaviour
     }
     public bool checkQ4()
     {
-        List<string> q3Enemies = new List<string> { "BigWolf", "BigWolf2", "BigWolf3", "BigWolf4", "BigWolf5", "BigWolf6", "BigWolf7" };
-        bool allKilled = q3Enemies.All(enemiesKilled.Contains);
+        List<string> q4Enemies = new List<string> { "BigWolf", "BigWolf2", "BigWolf3", "BigWolf4", "BigWolf5", "BigWolf6", "BigWolf7" };
+        bool allKilled = q4Enemies.All(enemiesKilled.Contains);
+        return allKilled;
+    }
+    public bool checkQ5()
+    {
+        List<string> q5Enemies = new List<string> {"Skeleton", "Skeleton2", "Skeleton3", "Skeleton4", "Skeleton5", "Skeleton6", "DemonBoss"};
+        bool allKilled = q5Enemies.All(enemiesKilled.Contains);
         return allKilled;
     }
 }

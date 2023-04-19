@@ -18,5 +18,10 @@ public class collisionDetection : MonoBehaviour
             Debug.Log("Hit Boss");
             col.GetComponent<Boss>().TakeDamage(move.attackDmg, move.attackTime);
         }
+        if (col.tag == "FinalBoss" && move.isAttacking)
+        {
+            Debug.Log("Hit Boss");
+            col.GetComponent<finalBoss>().TakeDamage(move.attackDmg, move.attackTime);
+        }
     }
 }

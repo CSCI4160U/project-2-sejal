@@ -38,12 +38,17 @@ public class DialogueObj : MonoBehaviour
     public dOBJs dialogue9;
     public dOBJs dialogue10;
     public dOBJs dialogue11;
+    public dOBJs dialogue12;
+    public dOBJs dialogue13;
+    public dOBJs dialogue14;
+
 
     [Header("NPCS")]
     public NPC1 npc1;
     public NPC2 npc2;
     public NPC3 npc3;
     public NPC4 npc4;
+    public NPC5 npc5;
 
 
     private void Start()
@@ -104,6 +109,18 @@ public class DialogueObj : MonoBehaviour
                 initDialogue(dialogue11);
                 currDialogue = dialogue11;
                 break;
+            case 12:
+                initDialogue(dialogue12);
+                currDialogue = dialogue12;
+                break;
+            case 13:
+                initDialogue(dialogue13);
+                currDialogue = dialogue13;
+                break;
+            case 14:
+                initDialogue(dialogue14);
+                currDialogue = dialogue14;
+                break;
             default:
                 break;
         }
@@ -148,6 +165,13 @@ public class DialogueObj : MonoBehaviour
                     break;
                 case 11:
                     obj.StartQuest(obj.questObjs[7]);
+                    break;
+                case 12:
+                    npc5.questGiven = true;
+                    obj.StartQuest(obj.questObjs[8]);
+                    break;
+                case 14:
+                    obj.StartQuest(obj.questObjs[9]);
                     break;
             }
             data.dialogueNum = 0;
