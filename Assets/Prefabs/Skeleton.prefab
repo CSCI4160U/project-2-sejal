@@ -211,6 +211,7 @@ MonoBehaviour:
   closeEnoughDistance: 2
   loop: 1
   deathTime: 4
+  attackDmg: 5
   player: {fileID: 0}
   HealthBar: {fileID: 0}
   isAttacked: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class playerMovement : MonoBehaviour
@@ -133,6 +134,10 @@ public class playerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             gameOver.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            SceneManager.LoadScene("MainMenu");
         }
 
         velocity.y += gravity * Time.deltaTime;

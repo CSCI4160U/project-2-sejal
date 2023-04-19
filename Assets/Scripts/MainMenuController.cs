@@ -14,4 +14,10 @@ public class MainMenuController : MonoBehaviour
         Debug.Log("Navigating to Credits");
         SceneManager.LoadScene("CreditsScene");
     }
+
+    public void Instructions()
+    {
+        Debug.Log("Navigating to Instructions");
+        SceneManager.LoadScene("Instructions");
+    }
 }

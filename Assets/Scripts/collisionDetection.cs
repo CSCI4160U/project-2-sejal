@@ -5,6 +5,7 @@ using UnityEngine;
 public class collisionDetection : MonoBehaviour
 {
     [SerializeField] public GameObject gameOver;
+    [SerializeField] public GameObject DeathScreen;
     public playerMovement move;
     public float attackTime;
 
@@ -31,6 +32,10 @@ public class collisionDetection : MonoBehaviour
         {
             Debug.Log("GameOver");
             gameOver.SetActive(true);
+        }
+        if (col.tag == "Water")
+        {
+            DeathScreen.SetActive(true);
         }
     }
 }

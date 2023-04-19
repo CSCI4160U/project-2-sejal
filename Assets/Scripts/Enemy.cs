@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float closeEnoughDistance = 1;
     [SerializeField] bool loop = true;
     [SerializeField] float deathTime;
+    [SerializeField] float attackDmg;
 
     public GameObject player;
     public GameObject HealthBar;
@@ -60,7 +61,7 @@ public class Enemy : MonoBehaviour
                 agent.enabled = false;
                 canAttack = false;
                 anim.SetTrigger("attack");
-                player.GetComponent<playerStats>().TakeDmg(6f);
+                player.GetComponent<playerStats>().TakeDmg(attackDmg);
                 StartCoroutine(ResetAttackCoolDown(4f));
             }
         }

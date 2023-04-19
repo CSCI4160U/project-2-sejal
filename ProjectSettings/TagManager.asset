@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - FinalBoss
   - GameOver
+  - Water
   layers:
   - Default
   - TransparentFX

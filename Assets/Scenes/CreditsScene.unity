@@ -299,8 +299,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back to Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0a06c4761262d6343b9b18aeb2375c86, type: 2}
-  m_sharedMaterial: {fileID: -4802094784069884503, guid: 0a06c4761262d6343b9b18aeb2375c86,
+  m_fontAsset: {fileID: 11400000, guid: e984ea469dd1ce84a9ecabbd420869f6, type: 2}
+  m_sharedMaterial: {fileID: 3101969835352975771, guid: e984ea469dd1ce84a9ecabbd420869f6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -325,8 +325,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 501443457}
   - component: {fileID: 501443456}
   - component: {fileID: 501443455}
+  - component: {fileID: 501443458}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -459,6 +460,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &501443458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501443454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &771655697
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,43 +813,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Sejal Shingal
-
-    Alexander Giannoulis
-
-
-    Tileset
-
-
-    Buttons
-
-
-    Font
-
-
-
-    Sound
-    Track:
-
-    Menus
-
-
-    Level
-
-
-
-    Enemies:
-
-    Toad
-
-    Bat and Mushroom
-
-
-    Little
-    Blue Witch'
+  m_text: "Sejal Shingal\nAlexander Giannoulis\n\n We hope you enjoy!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0a06c4761262d6343b9b18aeb2375c86, type: 2}
-  m_sharedMaterial: {fileID: -4802094784069884503, guid: 0a06c4761262d6343b9b18aeb2375c86,
+  m_fontAsset: {fileID: 11400000, guid: e984ea469dd1ce84a9ecabbd420869f6, type: 2}
+  m_sharedMaterial: {fileID: 3101969835352975771, guid: e984ea469dd1ce84a9ecabbd420869f6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1015,38 +1016,10 @@ MonoBehaviour:
   m_text: 'Game Created By
 
 
-
-    Tileset
-
-
-    Buttons
-
-
-    Font
-
-
-
-    Sound Track:
-
-    Menus
-
-
-    Level
-
-
-
-    Enemies:
-
-    Toad
-
-    Bat
-    and Mushroom
-
-
-    Little Blue Witch'
+    Thanks for playing!'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0a06c4761262d6343b9b18aeb2375c86, type: 2}
-  m_sharedMaterial: {fileID: -4802094784069884503, guid: 0a06c4761262d6343b9b18aeb2375c86,
+  m_fontAsset: {fileID: 11400000, guid: e984ea469dd1ce84a9ecabbd420869f6, type: 2}
+  m_sharedMaterial: {fileID: 3101969835352975771, guid: e984ea469dd1ce84a9ecabbd420869f6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
