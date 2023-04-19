@@ -8,13 +8,17 @@ public class playerStats : MonoBehaviour
     [SerializeField] public float maxHealth = 100f;
     [SerializeField] public float currentHealth;
     [SerializeField] bool isDead = false;
+    [SerializeField] public Animator anim;
     public float attackDmg = 10;
     public int questNum;
     public int dialogueNum;
     public List<string> enemiesKilled = new List<string>();
+    public GameObject DeathScreen = null;
 
     void Start() 
     {
+        DeathScreen = GameObject.Find("DeadCanvas");
+        DeathScreen.SetActive(false);
         currentHealth = maxHealth;
     }
     public void TakeDmg(float dmg) 
@@ -31,7 +35,8 @@ public class playerStats : MonoBehaviour
     {
         if (isDead) 
         {
-            Debug.Log("PlayerDied!");
+            anim.SetTrigger("Dead");
+            StartCoroutine(IsDead(4f));
         }
     }
 
@@ -70,5 +75,12 @@ public class playerStats : MonoBehaviour
         List<string> q5Enemies = new List<string> {"Skeleton", "Skeleton2", "Skeleton3", "Skeleton4", "Skeleton5", "Skeleton6", "DemonBoss"};
         bool allKilled = q5Enemies.All(enemiesKilled.Contains);
         return allKilled;
+    }
+    IEnumerator IsDead(float deathTime)
+    {
+        yield return new WaitForSeconds(2);
+        DeathScreen.SetActive(true);
+        yield return new WaitForSeconds(deathTime-2);
+        Destroy(gameObject);
     }
 }
