@@ -8,8 +8,12 @@ You can work on this assignment alone or in a group of no more than 2 students.
 | Alexander Giannoulis       |   Alex-Giannoulis  |
 
 Trailer video URL: https://www.youtube.com/watch?v=N_BJfT8G4Zw
+
 Playthrough video URL: https://www.youtube.com/watch?v=9z8YYurgfu8&t=0s
+
 Google Drive with videos and Independant Study: https://drive.google.com/drive/folders/1Y7_ywsWTXOHK0TMsA53NWx4fUTFBDqSl
+
+_**Important Note:** The scene loses its lighting settings if you load new game from editor! For this reason either launch the MainLevel directly from editor to play, or use the build and run function to build the game and then play! Thank you.
 
 _**Note:** The commit logs will be examined to be sure that both participants participated equally on this project._
 
