@@ -7,7 +7,9 @@ You can work on this assignment alone or in a group of no more than 2 students.
 | Sejal Shingal              |     Sejal-1109     |
 | Alexander Giannoulis       |   Alex-Giannoulis  |
 
-Trailer video URL: _________________________
+Trailer video URL: https://www.youtube.com/watch?v=N_BJfT8G4Zw
+Playthrough video URL: https://www.youtube.com/watch?v=9z8YYurgfu8&t=0s
+Google Drive with videos and Independant Study: https://drive.google.com/drive/folders/1Y7_ywsWTXOHK0TMsA53NWx4fUTFBDqSl
 
 _**Note:** The commit logs will be examined to be sure that both participants participated equally on this project._
 
